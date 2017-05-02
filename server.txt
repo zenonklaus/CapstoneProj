@@ -1,0 +1,44 @@
+http 통신
+json : key-value
+mysql
+아파치서버
+phpstorm - IDE
+코드이그나이터 - php framework
+
+-------------------------------------------------------
+
+XAMPP - Apache,PHP,MySQL를 한번에 설치할 수 있다.
+http://www.apachefriends.org/download.html
+
+1. PHP 설정하기
+C:\xampp\php\php.ini 파일을 수정한다.
+date.timezone=Europe/Berlin > date.timezone=Asia/Seoul
+;default_charset="UTF-8" > default_charset="UTF-8"
+;mbstring.language = Korean > mbstring.language = Korean
+;mbstring.internal_encoding = EUC-kr > mbstring.internal_encoding = UTF-8
+;zend_extension="c:\xampp\php\ext\php_xdebug.dll" > zend_extension="c:\xampp\php\ext\php_xdebug.dll"
+;xdebug.remote_enable = 0 > xdebug.remote_enable = 1
+;extension=php_fileinfo.dll = extension=php_fileinfo.dll
+
+2. Apache, MySQL 실행하기
+설치된 XAMPP Control Panel 실행하기
+Apache, MySQL start 버튼 클릭
+
+3. 정상동작 확인.
+브라우저에서 http://localhost/ 접속
+phpInfo 클릭 > 설정정보를 확인할 수 있다.
+phpMyAdmin 클릭 > 정상적으로 표시되면 문제가 없음.
+
+4. XAMPP 보안
+컴퓨터설정 > Windows 방화벽 > 고급설정 > 인바운드 규칙 선택
+Apache HTTP Server(개인 네트워크) : 허용, TCP
+Apache HTTP Server(개인 네트워크) : 허용, UDP
+mysqld(개인 네트워크) : 허용, TCP
+mysqld(개인 네트워크) : 허용, UDP
+
+-------------------------------------------------------
+Relation schema
+Store(SID, SName, Num_Table, Num_People); PK = SID, FK = NULL
+Food(FID, SID, FName, Price, Total_time, Total_people, AVG_time); PK = (FID, SID), FK = SID, AVG is a derived attr as Total_time / Total_people.
+Table(TID, SID, IsEmpty); PK = (TID, SID), FK = SID, IsEmpty is boolean attr.
+Status(SID, TID, FID, Start_time); PK = (SID, TID, FID), FK = SID, TID, FID 
